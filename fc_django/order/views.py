@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import FormView
-
+from django.views.generic import FormView, ListView
+from .models import Order
 from .forms import RegisterForm
 
 
@@ -18,3 +18,12 @@ class OrderCreate(FormView):
             'request': self.request
         })
         return kw
+
+class OrderList(ListView):
+    template_name = 'order.html'
+    context_object_name = 'order_list'
+
+    #필드에서 queryset을 쓰려면 session이 필요하기 때문에 함수 이용.
+    def get_queryset(self, **kwargs):
+        queryset = Order.objects.filter(fcuser__email=self.request.session.get('user'))
+        return queryset
