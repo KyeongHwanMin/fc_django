@@ -2,6 +2,14 @@
 {% load humanize %}
 {% block header %}
 <script>
+<!--  $(document).ready(function () {-->
+<!--    $.ajax({-->
+<!--      url: "/api/product",-->
+<!--      success: function (result) {-->
+<!--        console.log(result);-->
+<!--        }-->
+<!--       });-->
+<!--      });-->
   function product_detail(id) {
     $.ajax({
       url: "/api/product/" + id,
