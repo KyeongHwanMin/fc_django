@@ -29,8 +29,20 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+BATON = {
+    'SITE_HEADER': '패스트캠퍼스 백오피스',
+    'SITE_TITLE': '패스트캠퍼스 백오피스',
+    'INDEX_TITLE': '패스트캠퍼스 관리자페이지',
+    # 'SUPPORT_HREF': 'https://fastcampus.co.kr',
+    'SUPPORT_HREF': 'mailto:h45652@naver.com',
+    'COPYRIGHT': 'copyright © 2022 Fastcampus',
+    'POWERED_BY': '<a href="https://fastcampus.co.kr">Fastcampus</a>',
+    'MENU_TITLE': '패스트캠퍼스'
+
+}
 
 INSTALLED_APPS = [
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +57,8 @@ INSTALLED_APPS = [
     'fcuser',
     'order',
     'product',
+
+    'baton.autodiscover'
 ]
 
 MIDDLEWARE = [
