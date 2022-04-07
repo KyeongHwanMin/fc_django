@@ -14,6 +14,15 @@ class OrderAdmin(admin.ModelAdmin):
         if obj.status == '결제완료':
             return format_html(f'<span style="color:green">{obj.status}</span>')
         return format_html(f'<b>{obj.status}</b>')
+    
+    def changelist_view(self, request, extra_context=None):
+        extra_context = {'title': '주문 목록'}
+        return super().changelist_view(request, extra_context)
+
+    def changeform_view(self, request, object_id=None, form_url="", extra_context=None):
+        order = Order.objects.get(pk=object_id)
+        extra_context = {'title': f"'{order.fcuser.email}'의 '{order.product.name}' 주문 수정하기"}
+        return super().changeform_view(request, object_id, form_url, extra_context)
 
     styled_status.shor_description = '상태'
 

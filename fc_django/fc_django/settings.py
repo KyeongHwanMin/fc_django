@@ -51,12 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
+
     'rest_framework',
     'django.contrib.humanize',
 
-    'fcuser',
-    'order',
-    'product',
+    'fcuser.apps.FcuserConfig',
+    'order.apps.OrderConfig',
+    'product.apps.ProductConfig',
 
     'baton.autodiscover'
 ]
@@ -125,9 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
