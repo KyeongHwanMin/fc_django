@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import FormView, ListView
 from .models import Order
 from .forms import RegisterForm
+from django.utils.decorators import method_decorator
+from fcuser.decorators import login_required
 
 
 class OrderCreate(FormView):
@@ -19,6 +21,7 @@ class OrderCreate(FormView):
         })
         return kw
 
+@method_decorator(login_required, name='dispatch')
 class OrderList(ListView):
     template_name = 'order.html'
     context_object_name = 'order_list'
@@ -27,3 +30,5 @@ class OrderList(ListView):
     def get_queryset(self, **kwargs):
         queryset = Order.objects.filter(fcuser__email=self.request.session.get('user'))
         return queryset
+
+
